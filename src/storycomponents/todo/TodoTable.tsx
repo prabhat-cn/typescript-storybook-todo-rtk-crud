@@ -6,6 +6,12 @@ import {
 } from '../../store/actions/storyTodoAction';
 import { useAppDispatch } from '../../store/reducers/hooks';
 import Modal from 'react-modal';
+import {
+  AiFillDelete,
+  AiFillEdit,
+  AiFillEye,
+  AiOutlineCheck,
+} from 'react-icons/ai';
 
 interface Props {
   todoData: Todo;
@@ -26,8 +32,6 @@ const TodoTable: React.FC<Props> = ({
 }: Props) => {
   const dispatch = useAppDispatch();
   const [openViewModal, setViewOpenModal] = useState(false);
-
-  const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [todo, setTodo] = useState<Todo>();
 
   const customStyles = {
@@ -72,13 +76,13 @@ const TodoTable: React.FC<Props> = ({
           )}
         </td>
         <td>
-          <button type="button" onClick={() => viewTodo(todoData)}>
-            View
-          </button>
+          <span onClick={() => viewTodo(todoData)}>
+            <AiFillEye />
+          </span>
           &nbsp;
-          <button type="button" onClick={() => deleteTodoItem(id)}>
-            Delete
-          </button>
+          <span onClick={() => deleteTodoItem(id)}>
+            <AiFillDelete />
+          </span>
         </td>
       </tr>
 
